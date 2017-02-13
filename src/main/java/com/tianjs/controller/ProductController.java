@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
 import com.tianjs.model.Product;
-import com.tianjs.mq.recevier.ReceiverService;
-import com.tianjs.mq.send.SenderService;
 import com.tianjs.service.ProductService;
 
 @Controller
@@ -20,11 +18,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@Autowired
-	SenderService senderService;
-	
-	@Autowired
-	ReceiverService receiverService;
+//	@Autowired
+//	SenderService senderService;
+//	
+//	@Autowired
+//	ReceiverService receiverService;
 
 	@RequestMapping("/findproduct")
 	public String index(Model model, HttpSession session, @ModelAttribute(value = "product") Product product,
@@ -47,7 +45,7 @@ public class ProductController {
 	
 	@RequestMapping("/productmq")
 	public String sendMsg(Model model){
-		senderService.sendMsg();
+//		senderService.sendMsg();
 		return "product";
 	}
 	
