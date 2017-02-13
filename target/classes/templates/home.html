@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8"/>
+    <title>天安金交所</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/styles.css"
+          th:href="@{css/styles.css}"
+          rel="stylesheet"
+          media="screen"/>
+   <link rel="icon" type="image/x-icon" href="/img/favicon.ico"/>
+</head>
+<style>
+.img {
+	min-height: 25px;
+	height: 23px;
+}
+.box1 {
+	width: 905px;
+	float: left;
+	display: inline;
+	height: 22px;
+	padding-left: 176px;
+	color:#ffffff;
+}
+.box2 {
+	width: 495px;
+	float: right;
+	display: inline;
+}
+.navbar-brand {
+	float: right;
+	height: 50px;
+	padding: 3px 15px;
+	font-size: 15px;
+	line-height: 20px;
+}
+.col-xs-9 {
+	width: 75%;
+	float: right;
+	padding-left: 200px;
+	padding-top: 0px;
+}
+.col-xs-3 {
+	width: 25%;
+	float: left;
+	padding-top: 28px;
+	padding-left: 169px;
+}
+</style>
+<body>
+<div th:include="header :: header"></div>
+<div class="top-box2">
+    <div class="warp-box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-3"><a href="/" th:href="@{/}"><img alt="100%x200" src="..static/img/0-logo.png" th:src="@{img/0-logo.png}"/></a>
+                </div>
+                <div class="col-xs-9">
+                    <a href="/" th:href="@{/}" class="active">首页</a>
+                    <a href="#" >产品中心</a>
+                    <a href="###" data-menu="top" data-index="0">业务专区</a>
+                    <a href="#" data-menu="top" data-index="1" >产品公告</a>
+                    <a href="#" data-menu="top" data-index="2" >新闻中心</a>
+                    <a href="#" data-menu="top" data-index="3" >会员服务</a>
+                    <a href="/about" th:href="@{/about}" data-menu="top" data-index="4" >关于前交所</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div class="top-box3">
+    <div class="warp-box">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 business">
+                    <a href="https://cp.qex.com/factoringBill/billAreaIndex.do">票据业务</a><a href="#">B2B业务</a><a href="#">跨境业务</a><a href="###">&nbsp;&nbsp;&nbsp;&nbsp;</a><a href="###">&nbsp;&nbsp;&nbsp;&nbsp;</a><a href="###">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </div>
+                <div class="col-xs-12 notices">
+                    <a href="#" >挂牌公告</a><a href="#" >成立公告</a><a href="#" >发行公告</a><a href="#" >其他公告</a>
+                </div>
+                <div class="col-xs-12 news">
+                    <a href="#" >本所新闻</a><a href="#" >本所公告</a><a href="#" >前交视角</a>
+                </div>
+                <div class="col-xs-12 service">
+                    <a href="#" >会员特权</a><a href="#" >入会指引</a><a href="#" >会员制度</a><a href="#" >相关下载</a>
+                </div>
+                <div class="col-xs-12 about">
+                    <a href="#" >本所介绍</a><a href="#" >管理层介绍</a><a href="#" >联系我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="banner">
+      <div id="bannerSwiper" class="swiper-container">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+    <div class="warp-box">
+      <div class="container-fluid model1">
+        <div class="rows">
+          <div class="col-xs-6 animated fadeInLeft"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/></div>
+          <div class="col-xs-6">
+            <div class="title">公司概览<span>COMPANY OVERVIEW</span></div>
+            <div class="paragraph1">深圳前海金融资产交易所有限公司（简称“前海金融资产交易所”）作为华南地区唯一一家通过国务院验收的金融资产交易所，依托前海政策优势及平安集团综合金融优势，立足“金融+互联网”，致力于打造国内领先的金融资产交易所。</div>
+            <ul class="company-overview-list">
+              <li><a href="#" data-bigPic="static/img/index/b2b.png"><img src="static/img/index/icon3.png" />B2B业务</a></li>
+              <li><a href="https://cp.qex.com/factoringBill/billAreaIndex.do" data-bigPic="static/img/index/piaoju.png"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>票据业务</a></li>
+              <li><a href="#" data-bigPic="static/img/index/kuajin.png"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>跨境业务</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid bg1">
+      <div class="row warp-box model2">
+        <div class="col-xs-7">
+          <div class="title"><strong>产品</strong>公告<span>LISTING</span></div>
+          <div class="more"><a href="#">查看更多>></a></div>
+          <ul id="p2-1" class="notices-list">
+              
+                <li style='animation-delay:0.25s;'>
+                    <a href='#'>
+                    <time>2017-01-23</time>
+                    <span>【挂牌公告】深圳市宇商小额贷款有限公司债权收益权1007170190009转让公告</span>
+                  </a>
+                </li>
+              
+                <li style='animation-delay:0.5s;'>
+                    <a href='#'>
+                    <time>2017-01-23</time>
+                    <span>【挂牌公告】深圳市宇商小额贷款有限公司债权收益权1007170190008转让公告</span>
+                  </a>
+                </li>
+              
+                <li style='animation-delay:0.75s;'>
+                    <a href='#'>
+                    <time>2017-01-23</time>
+                    <span>【挂牌公告】深圳市宇商小额贷款有限公司债权收益权1007170190007转让公告</span>
+                  </a>
+                </li>
+              
+                <li style='animation-delay:1.0s;'>
+                    <a href='#'>
+                    <time>2017-01-23</time>
+                    <span>【挂牌公告】深圳市宇商小额贷款有限公司债权收益权1007170190006转让公告</span>
+                  </a>
+                </li>
+              
+                <li style='animation-delay:1.25s;'>
+                    <a href='#'>
+                    <time>2017-01-23</time>
+                    <span>【挂牌公告】深圳赫美小额贷款股份有限公司债权1007170190014转让公告</span>
+                  </a>
+                </li>
+              
+          </ul>
+        </div>
+        <div id="p2-2" class="col-xs-4 col-xs-offset-1"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/></div>
+      </div>
+    </div>
+    <div class="warp-box">
+      <div class="container-fluid model3">
+        <div class="title"><strong>新闻</strong>中心<span>NEWS CENTER</span></div>
+        <ul class="row news-list">
+          
+            <li class="col-xs-3">
+              <a href='#' class="text">
+                <div class="news-box">
+                   <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>
+                  <div title='人民币加入SDR给跨境业务带来的机遇和挑战'>人民币加入SDR给跨境业务带来的机遇和挑战</div>
+                  <div>2016-10-27</div>
+                  <div>2015年12月1日，IMF正式宣布人民币纳入SDR，新的货币篮子于2016年10月1日正式生效。目前SDR的货币篮子组成已变为：美元41.73%，欧元30.93%，人民币10.92%，日元8.33%，英镑8.09%。人民币正式加入SDR货币篮子，是人民币国际化的重要里程碑，成为第三大储备货币。从理论上讲，人民币将与美元一样，拥有“铸币税”等特权，但由于人民币在全球货币的使用量还很小，所以短期来看</div>
+                </div>
+              </a>
+            </li>
+          
+            <li class="col-xs-3">
+              <a href='#' class="text">
+                <div class="news-box">
+                   <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>
+                  <div title='前交所、证券联队参加平安一家亲活动'>前交所、证券联队参加平安一家亲活动</div>
+                  <div>2016-10-27</div>
+                  <div>为庆祝中华人民共和国成立67周年、中国共产党成立95周年，2016年10月15日，中国平安集团举办了以“敬党爱国，咏颂平安”为主题的歌咏汇。集团驻深圳地区27家子公司组成12支联队参加比赛。</div>
+                </div>
+              </a>
+            </li>
+          
+            <li class="col-xs-3">
+              <a href='#' class="text">
+                <div class="news-box">
+                   <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>
+                  <div title='前交所举办一周年庆暨司歌合唱比赛'>前交所举办一周年庆暨司歌合唱比赛</div>
+                  <div>2016-10-26</div>
+                  <div>为庆祝深圳前海金融资产交易所有限公司（以下简称“前交所”）成立一周年并回顾总结一年来业务发展成果及各业务团队的业务亮点，从而进一步提升全体员工的凝聚力和战斗力，10月14日，前交所在平安大学隆重召开了2016年第四季度业务研讨会、司歌合唱比赛及团建活动。</div>
+                </div>
+              </a>
+            </li>
+          
+            <li class="col-xs-3">
+              <a href='#' class="text">
+                <div class="news-box">
+                   <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>
+                  <div title='前交所成功举办交易商票据投融资对接会'>前交所成功举办交易商票据投融资对接会</div>
+                  <div>2016-09-08</div>
+                  <div>9月1日，前交所在深圳举行首场“交易商票据投融资对接会”， 平安银行总行票据事业部、网金部、深圳分行、平安大华基金汇通、广州农商银行等多家投资机构及来自北京、上海、广州、深圳、杭州、山东、河南、福建等地的多家保理公司参加此次研讨会，会上，24家保理公司同前交所集体签订《交易商合作协议》。</div>
+                </div>
+              </a>
+            </li>
+          
+        </ul>
+        <div class="more"><a href="#">查看更多>></a></div>
+      </div>
+    </div>
+    <div class="container-fluid bg1 model4">
+      <div class="row warp-box insights-box">
+        
+            <div class="row warp-box">
+              <div class="col-xs-6">
+                <a href="#" >
+                   <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>
+                </a>
+              </div>
+              <div class="col-xs-6">
+                <div class="title">
+                  <strong>前交</strong>视角<span>insights</span>
+                </div>
+                <div class="title2">
+                  <a href="#" class="text">人民币加入SDR给跨境业务带来的机遇和挑战</a>
+                </div>
+                <div class="time">2016-10-27</div>
+                <div class="paragraph1">
+                  <a href="#" class="text">2015年12月1日，IMF正式宣布人民币纳入SDR，新的货币篮子于2016年10月1日正式生效。目前SDR的货币篮子组成已变为：美元41.73%，欧元30.93%，人民币10.92%，日元8.33%，英镑8.09%。人民币正式加入SDR货币篮子，是人民币国际化的重要里程碑，成为第三大储备货币。从理论上讲，人民币将与美元一样，拥有“铸币税”等特权，但由于人民币在全球货币的使用量还很小，所以短期来看</a>
+                </div>
+                <div class="link">
+                  <a href="#">查看更多&gt;&gt;</a>
+                </div>
+              </div>
+            </div>
+        
+      </div>
+    </div>
+    <div class="warp-box">
+      <div class="f-link">
+        <div class="title"><strong>合作</strong>伙伴<span>OUR PartnerS</span></div>
+        <div class="logo-box">
+          <div id="logoSwiper" class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><a href="http://bank.pingan.com/" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安银行</a></div>
+              <div class="swiper-slide"><a href="http://www.unitedratings.com.cn" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>联合信用评级有限公司</a></div>
+              <div class="swiper-slide"><a href="http://stock.pingan.com.hk/" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平证香港</a></div>
+              <div class="swiper-slide"><a href="http://stock.pingan.com/beta/index.shtml" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安证券</a></div>
+              <div class="swiper-slide"><a href="http://www.dagongcredit.com" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>大公国际资信评估有限公司</a></div>
+              <div class="swiper-slide"><a href="http://realestate.pingan.com/index.shtml" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安不动产</a></div>
+              <div class="swiper-slide"><a href="http://asset.pingan.com/" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安资管</a></div>
+              <div class="swiper-slide"><a href="http://fund.pingan.com/index.shtml" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安大华</a></div>
+              <div class="swiper-slide"><a href="http://trust.pingan.com/" target="_blank"> <img alt="100%x200" src="..static/img/2wm.png" th:src="@{img/2wm.png}"/>平安信托</a></div>
+            </div>
+          </div>
+          <div class="logoSwiper-fix">
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-box"><span></span><span></span><span></span><span></span></div>
+    
+<div th:include="footer :: footer"></div>
+</body>
+<script src="webjars/jquery/2.1.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="../static/js/home.js" th:src="@{js/home.js}"></script>
+</html>

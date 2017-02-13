@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"
+  updateCheck="false">
+          <diskStore path="D:/Tmp_EhCache" />
+          <!-- 　user.home – 用户主目录 user.dir  – 用户当前工作目录  java.io.tmpdir – 默认临时文件路径 -->
+           <defaultCache eternal="false" maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
+    timeToIdleSeconds="0" timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU" />
+
+            <cache name="tianjs_cache" eternal="false" maxElementsInMemory="100" overflowToDisk="false" diskPersistent="false"
+    timeToIdleSeconds="0" timeToLiveSeconds="300" memoryStoreEvictionPolicy="LRU" />
+    <!-- 可选策略有：LRU（最近最少使用，默认策略）、FIFO（先进先出）、LFU（最少访问次数）。    -->
+</ehcache>

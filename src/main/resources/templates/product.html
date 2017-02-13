@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          rel="stylesheet" media="screen"/>
+    <link href="../static/css/styles.css"
+          th:href="@{css/styles.css}"
+          rel="stylesheet"
+          media="screen"/>
+</head>
+<body>
+<div class="form-group">
+<form th:action="@{/findproduct}" th:object="${product}" method="post">
+        <div>
+        <label for="proName">产品名称:</label>
+        <input type="text" name="proName"  id="proName"/>
+        </div>
+        <div>
+        <label for="proCode">产品代码:</label>
+        <input type="text" name="proCode" id="proCode"/>
+        </div>
+        <div>
+        <input type="submit" value="查询" />
+        <a th:href="@{/loginOut}" class="navbar-brand"> 安全退出</a>
+        <a th:href="@{/getInterest}" class="navbar-brand"> 查询利息</a>
+        <a th:href="@{/profile}" class="navbar-brand"> 查询权限</a>
+        <a th:href="@{/productmq}" class="navbar-brand"> 发送消息</a>
+        <a th:text="${productname}" ></a>
+        </div>
+    </form>
+</div>
+<table class="table table-hover" style="border-collapse: 0">
+            <thead>
+                <tr>
+                    <th>产品主键</th>
+                    <th>产品名称</th>
+                    <th>产品代码</th>
+                </tr>
+            </thead>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.proName}"></td>
+                <td th:text="${product.proCode}"></td>
+               <!-- <th th:text="${#dates.format(user.birthday, 'yyyy-MM-dd')}"></th>
+                <td th:switch="${emp.post_type}">  
+        <p th:case="1">行政经理</p>  
+        <p th:case="2">部门经理</p>  
+        <p th:case="3">总经理</p>  
+    </td> 
+                <th th:text="${user.email}"></th> --> 
+            </tr>
+        </table>
+        <div style="width:300px;height:50px;margin:auto;">
+        <nav>
+            <ul class="pagination">
+               <!-- <li><a href="#">&laquo;</a></li> --> 
+
+                <li>
+                    <a th:if="${not isFirstPage}" th:href="@{${'/findproduct'}(pageNum=${pageNum-1},pageSize=${pageSize})}">上一页</a>
+                    <a th:if="${isFirstPagee}" href="javascript:void(0);">上一页</a>
+                </li>
+
+                <li th:each="pageNo : ${#numbers.sequence(1, totalPages)}">
+                    <a th:if="${pageNum eq pageNo}" href="javascript:void(0);" style="background:#7FFF00">
+                         <span th:text="${pageNo}"></span>
+                    </a>
+
+                    <a th:if="${not (pageNum eq pageNo)}" th:href="@{${'/findproduct'}(pageNum=${pageNo},size=${pageSize})}">
+                        <span th:text="${pageNo}"></span>
+                    </a>
+                </li>
+                <li>
+                        <a th:if="${not isLastPage}" th:href="@{${'/findproduct'}(pageNum=${pageNum+1},size=${pageSize})}">下一页</a>
+                        <a th:if="${isLastPage}" href="javascript:void(0);">下一页</a>
+                    </li>
+
+              <!--  <li><a href="#">&raquo;</a></li> -->
+            </ul>
+        </nav>
+        </div>
+</body>
+</html>

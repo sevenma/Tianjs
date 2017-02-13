@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tianjs.mapper.TRoleMapper">
+
+
+<resultMap id ="baseResultMap"  type="com.tianjs.model.Role">
+		<result column ="id"  property ="id"/>
+		<result column ="rolename"  property ="rolename"/>
+</resultMap>
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 	id,	rolename
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="findById" resultType="com.tianjs.model.Role"  parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_role
+		 WHERE id = #{id}
+	</select>
+
+	<select id="findPermissionByRoleId" resultType="com.tianjs.model.Permission"  parameterType="java.lang.String">
+		 SELECT
+		 p.*
+		 FROM t_role r left join t_permission p on r.id=p.role_id
+		 WHERE r.id = #{id}
+	</select>
+
+	<select id="findListBy" resultType="com.tianjs.model.Role" parameterType="java.util.HashMap" resultMap ="baseResultMap">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_role
+		 WHERE 1=1  
+			<if test="id != null    and   !''.equals(id) ">
+				  and  id = #{id}  
+			</if>
+			<if test="rolename != null    and   !''.equals(rolename) ">
+				  and  rolename = #{rolename}  
+			</if>
+
+	</select>
+
+
+	<select id="findPageBy" resultType="com.tianjs.model.Role" parameterType="java.util.HashMap" resultMap ="baseResultMap">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM t_role
+		 WHERE 1=1  
+			<if test="id != null    and   !''.equals(id) ">
+				  and  id = #{id}  
+			</if>
+			<if test="rolename != null    and   !''.equals(rolename) ">
+				  and  rolename = #{rolename}  
+			</if>
+
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteById" parameterType="java.lang.String">
+		 DELETE FROM t_role
+		 WHERE id = #{id}
+	</delete>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="delete" parameterType="java.util.HashMap">
+		 DELETE FROM t_role
+		 WHERE 1=1 
+			<if test="id != null    and   !''.equals(id) ">
+				  and  id in (${id})  
+			</if>
+			<if test="rolename != null    and   !''.equals(rolename) ">
+				  and  rolename = #{rolename}  
+			</if>
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.tianjs.model.Role">
+		 INSERT INTO t_role
+ 		(id,rolename) 
+		 VALUES 
+ 		(#{id},#{rolename}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="java.util.HashMap">
+		 INSERT INTO t_role
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null  and   !''.equals(id) ">
+				 id,
+			</if>
+			<if test="rolename != null  and   !''.equals(rolename) ">
+				 rolename,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null  and  ! ''.equals(id) ">
+				 #{id},
+			</if>
+			<if test="rolename!=null  and  ! ''.equals(rolename) ">
+				 #{rolename},
+			</if>
+		 </trim>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="update" parameterType="com.tianjs.model.Role">
+		 UPDATE t_role
+ 		 <set> 
+			<if test="rolename != null    ">
+				 rolename = #{rolename},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateById"  parameterType="com.tianjs.model.Role">
+		 UPDATE t_role
+		 SET 
+			 rolename = #{rolename}
+		 WHERE id = #{id}
+	</update>
+
+</mapper>
