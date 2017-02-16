@@ -95,6 +95,7 @@ public class ShiroConfiguration {
 	        filterChainDefinitionMap.put("/fonts/**", "anon");
 	        filterChainDefinitionMap.put("/login", "anon");
 	        filterChainDefinitionMap.put("/registration", "anon");
+	        filterChainDefinitionMap.put("/kaptcha", "anon");//注意不配置验证码不能生成
 	        filterChainDefinitionMap.put("/", "anon");//anon 可以理解为不拦截
 	        // anon：它对应的过滤器里面是空的,什么都没做
 	        logger.info("##################从数据库读取权限规则，加载到shiroFilter中##################");
