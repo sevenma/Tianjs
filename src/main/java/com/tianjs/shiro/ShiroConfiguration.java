@@ -35,7 +35,7 @@ public class ShiroConfiguration {
 	 * @param dispatcherServlet
 	 * @return
 	 * @author YIDANLIN
-	 * @create 2016年1月13日
+	 * @create 2017年2月13日
 	 */
 	    @Bean
 	    public FilterRegistrationBean filterRegistrationBean() {
@@ -80,7 +80,7 @@ public class ShiroConfiguration {
 	 * 加载shiroFilter权限控制规则（从数据库读取然后配置）
 	 *
 	 * @author YIDANLIN
-	 * @create 2016年1月14日
+	 * @create 2017年2月13日
 	 */
 	    private void loadShiroFilterChain(ShiroFilterFactoryBean shiroFilterFactoryBean){
 	        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
