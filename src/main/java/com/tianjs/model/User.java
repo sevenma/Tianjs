@@ -14,6 +14,8 @@ public class User {
 	private String username;
 	@NotEmpty(message = "密码不能为空")
 	private String password;
+	@NotEmpty(message = "手机号不能为空")
+	private String phonenumber;
 	private List<Role> roleList;// 一个用户具有多个角色
 	public Integer getId() {
 		return id;
@@ -39,6 +41,14 @@ public class User {
 		this.password = password;
 	}
 	
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+
 	@Transient
 	public List<Role> getRoleList() {
 		return roleList;
