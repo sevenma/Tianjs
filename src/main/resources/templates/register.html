@@ -4,11 +4,16 @@
 <head>
 <title>注册</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet" media="screen" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
 <link href="../static/css/styles.css" th:href="@{css/styles.css}"
 	rel="stylesheet" media="screen" />
 </head>
+<style>
+.vertical-offset-100 {
+	padding-top: 100px;
+	padding-left: 112px;
+}
+</style>
 <body class="background"
 	style="background: url('../static/img/background.png') no-repeat center center fixed;"
 	th:style="'background: url(' + @{/img/background.png} + ') no-repeat center center fixed;'">
@@ -39,8 +44,15 @@
 									<option value="USER">用户</option>
 								</select>
 							</div> -->
+							<div class="form-group">
+								<label for="kaptcha"> <input type="text" name="kaptcha"
+									id="kaptcha" maxlength="4" class="span4" style="width: 72%" placeholder="验证码" />
+									<img th:src="@{/kaptcha}" id="kaptchaImage" src="/img/kaptcha.jpg"
+									style="margin-left: -5px; margin-top: -8px; width: 74px; height: 29px;" />
+								</label>
+							</div>
 							<div class="alert alert-danger" role="alert">
-								<span th:text="${result}"></span>
+								<span th:text="${result}"></span>	
 							</div>
 							<div>
 								<input class="btn btn-lg btn-success btn-block" type="submit" value="submit" />
@@ -52,4 +64,18 @@
 		</div>
 	</div>
 </body>
+<script th:src="@{/js/jquery.js}"></script>
+<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   $(function () { 
+        $('#kaptchaImage').click(function () {
+            $(this).hide().attr('src', '/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
+        });
+    });
+
+    function changeCode() {
+        $('#kaptchaImage').hide().attr('src', '/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
+        event.cancelBubble = true;
+    }
+</script>
 </html>
