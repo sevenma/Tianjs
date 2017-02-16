@@ -1,81 +1,191 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>注册</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
-<link href="../static/css/styles.css" th:href="@{css/styles.css}"
-	rel="stylesheet" media="screen" />
-</head>
+<link rel="stylesheet" th:href="@{/css/base.css}"
+	href="../static/css/base.css" />
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 <style>
-.vertical-offset-100 {
-	padding-top: 100px;
-	padding-left: 112px;
+html {
+	
 }
+
+body {
+	background: url("../img/regBg.jpg") no-repeat center center;
+}
+
+form {
+	width: 610px;
+	margin: 100px auto 0px auto;
+	/*position: absolute;*/
+	/*top:80px;*/
+	/*right:50px;*/
+	/*animation: moveX 1s;*/
+	padding: 30px;
+	box-shadow: 0px 0px 100px 0px #37f1e9, 2px 5px 5px 0px
+		rgba(55, 241, 233, .3);
+	background: #fff;
+	border-radius: 10px;
+}
+
+@
+keyframes moveX { 0% {
+	right: -545px;
+	opacity: .6;
+}
+	100%{
+		right: 50px;              
+		opacity:1;
+	}
+}
+form h4 {
+	font-size: 18px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+form input {
+	transition: all .3s;
+}
+
+form>div {
+	margin: 10px 0px;
+	position: relative
+}
+
+form>div>label {
+	float: left;
+	display: block;
+	width: 160px;
+	text-align: right;
+	line-height: 44px;
+	height: 44px;
+	position: relative;
+	letter-spacing: 1px;
+}
+
+form>div>label:after {
+	content: '*';
+	display: block;
+	color: red;
+	position: absolute;
+	right: 9px;
+	top: -2px
+}
+
+form>div>label+input {
+	margin-left: 10px;
+	width: 280px;
+	height: 44px;
+	border: 1px solid #cecece;
+	padding: 6px 8px;
+	text-indent: 50px;
+	background: #fff;
+	border-radius: 3px;
+}
+
+form>div>label+input:focus {
+	background: #fff;
+	border: 1px solid #f15a50;
+	box-shadow: 0px 0px 0px 5px rgba(241, 90, 80, .3);
+}
+
+form>div>i {
+	position: absolute;
+	left: 170px;
+	width: 44px;
+	height: 44px;
+	border-radius: 3px 0px 0px 3px;
+	color: #999;
+	border-right: 1px solid #cecece;
+}
+
+form>div>div {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 5px
+}
+
+form>div>div>img {
+	display: block;
+}
+
+form>div>input:focus+i {
+	box-shadow: 0px 0px 3px #f15a50 inset;
+	color: rgb(255, 90, 0);
+	border-right: 1px solid #f15a50;
+}
+
+form>p {
+	text-align: center;
+	margin: 20px 0px;
+}
+
+form>p>input[type="submit"] {
+	width: 90px;
+	height: 44px;
+	background: #f15a50;;
+	color: #fff;
+	font-size: 16px;
+	border-radius: 3px;
+	border: 1px solid rgba(241, 90, 80, .3);
+	box-shadow: 0px 0px 3px #f15a50;
+	cursor: pointer;
+}
+
+form>p>input[type="submit"]:active {
+	color: #f15a50;
+	background: #fff;
+	box-shadow: 0px 0px 0px 5px rgba(241, 90, 80, .3);
+}
+
+form>div>input[type="button"] {
+	width: 90px;
+	height: 44px;
+	border: 1px solid rgba(241, 90, 80, .3);
+	cursor: pointer;
+	margin-left: 10px;
+}
+
 </style>
-<body class="background"
-	style="background: url('../static/img/background.png') no-repeat center center fixed;"
-	th:style="'background: url(' + @{/img/background.png} + ') no-repeat center center fixed;'">
-	<div class="row vertical-offset-100">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">注册信息</h3>
-				</div>
-				<div class="panel-body">
-					<form th:action="@{/registration}" method="post">
-						<fieldset>
-						<div class="form-group">
-								<input class="form-control" placeholder="Id"
-									name="id" type="text" />
-							</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="Username"
-									name="username" type="text" />
-							</div>
-							<div class="form-group">
-								<input class="form-control" placeholder="Password"
-									name="password" type="password" value="" />
-							</div>
-							<!-- <div class="form-group">
-								<select class="combobox" name="role">
-									<option value="ADMIN">管理员</option>
-									<option value="USER">用户</option>
-								</select>
-							</div> -->
-							<div class="form-group">
-								<label for="kaptcha"> <input type="text" name="kaptcha"
-									id="kaptcha" maxlength="4" class="span4" style="width: 72%" placeholder="验证码" />
-									<img th:src="@{/kaptcha}" id="kaptchaImage" src="/img/kaptcha.jpg"
-									style="margin-left: -5px; margin-top: -8px; width: 74px; height: 29px;" />
-								</label>
-							</div>
-							<div class="alert alert-danger" role="alert">
-								<span th:text="${result}"></span>	
-							</div>
-							<div>
-								<input class="btn btn-lg btn-success btn-block" type="submit" value="submit" />
-							</div>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+</head>
+<body>
+<!-- <div th:include="header :: header" style="height: 116px;background: #f5f5f5;"></div>  -->
+<div class="container">
+    <form th:action="@{/registration}" method="post">
+        <header><h4>用户注册</h4></header>
+        <div><label for="">用户名：</label><input name="username" type="text" maxlength="20" size="8" placeholder="请输入用户名" required="required"/><i></i>
+        </div>
+        <div><label for="">用户密码：</label><input name="password" type="password" maxlength="20" size="8" placeholder="请输入密码" required="required"/></div>
+        <div><label for="">确认密码：</label><input name="repassword" type="password" maxlength="20" size="8" placeholder="请再输入密码" required="required"/></div>
+        <div><label for="">手机号码：</label><input name="phonenumber" type="text" maxlength="20" size="8" placeholder="请输入手机号码" pattern="[0-9]{11}" required="required"/></div>
+        <div><label for="">短信验证码：</label><input name="msgnumber" type="text" placeholder="请输入短信验证码" required="required"/><input type="button"  value="获取验证码"/></div>
+        <div><label for="kaptcha">图形验证码：</label><input type="text" name="kaptcha" id="kaptcha" maxlength="4" placeholder="请输入图形验证码"  required="required"/>
+            <div><img th:src="@{/kaptcha}" id="kaptchaImage" src="/img/kaptcha.jpg" width="90" height="44"/></div>
+        </div>
+        <div>
+            <span style="padding-left: 180px;color: red;font-size: inherit;" th:text="${result}"></span>
+        </div>
+        <p><input type="submit" value="注册"/></p>
+    </form>
+</div>
 </body>
 <script th:src="@{/js/jquery.js}"></script>
-<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-   $(function () { 
-        $('#kaptchaImage').click(function () {
-            $(this).hide().attr('src', '/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
-        });
-    });
+	$(function() {
+		$('#kaptchaImage').click(
+				function() {
+					$(this).hide().attr('src',
+							'/kaptcha?' + Math.floor(Math.random() * 10000))
+							.fadeIn();
+				});
+	});
 
-    function changeCode() {
-        $('#kaptchaImage').hide().attr('src', '/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
-        event.cancelBubble = true;
-    }
+	function changeCode() {
+		$('#kaptchaImage').hide().attr('src',
+				'/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
+		event.cancelBubble = true;
+	}
 </script>
 </html>
