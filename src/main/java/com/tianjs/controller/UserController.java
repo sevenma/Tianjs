@@ -1,5 +1,6 @@
 package com.tianjs.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.google.code.kaptcha.Constants;
 import com.tianjs.model.User;
 import com.tianjs.service.UserService;
 
@@ -49,10 +51,21 @@ public class UserController {
 
     //注册用户，使用POST，传输数据
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registerPost(Model model,
+    public String registerPost(Model model,HttpServletRequest request,
                                //这里和模板中的th:object="${user}"对应起来
                                @ModelAttribute(value = "user") User user,
                                HttpServletResponse response) {
+    	String kaptcha = request.getParameter("kaptcha");
+        String captcha = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+	    System.out.println("用户输入的验证码是："+kaptcha+";系统生成的验证码是："+captcha);
+		
+		if("".equals(kaptcha)){
+			model.addAttribute("result", "请输入验证码");
+        	return "register";
+		}else if(!captcha.equals(kaptcha)){
+			model.addAttribute("result", "验证码错误");
+        	return "register";
+		}
         //使用userService处理业务
         String result = userService.save(user);
         if("注册成功".equals(result)){
@@ -67,10 +80,21 @@ public class UserController {
     }
 
     @RequestMapping("/login")
-    public String login(@ModelAttribute(value = "user") User user,Model model,HttpSession session,HttpServletResponse response){
+    public String login(@ModelAttribute(value = "user") User user,Model model,HttpSession session,HttpServletRequest request,HttpServletResponse response){
       if(user.isEmpty()) {
         return "login";
       }else {
+    	String kaptcha = request.getParameter("kaptcha");
+        String captcha = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
+  	    System.out.println("用户输入的验证码是："+kaptcha+";系统生成的验证码是："+captcha);
+  		
+  		if("".equals(kaptcha)){
+  			model.addAttribute("result", "请输入验证码");
+          	return "login";
+  		}else if(!captcha.equals(kaptcha)){
+  			model.addAttribute("result", "验证码错误");
+          	return "login";
+  		}
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         try {
