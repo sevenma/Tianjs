@@ -99,7 +99,7 @@ public class UserController {
         UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(), user.getPassword());
         try {
           subject.login(token);
-         //登录后，可以用如下方式取得session  设置超时时间
+         //登录后，可以用如下方式取得session  设置超时时间(10分钟)，超时会自动跳转至登录页面
           SecurityUtils.getSubject().getSession().setTimeout(600000); 
         }catch (UnknownAccountException|IncorrectCredentialsException e){
           model.addAttribute("result","用户名/密码错误");
