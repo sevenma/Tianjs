@@ -122,7 +122,6 @@ public class Application  extends WebMvcConfigurerAdapter {
         properties.put("kaptcha.textproducer.char.length", "4");
         properties.put("kaptcha.background.clear.to", "gray");
         properties.put("kaptcha.noise.color", "black");//增加干扰线
-//        properties.put("kaptcha.textproducer.font.size", "50px.");
 //        properties.put("kaptcha.noise.impl", "com.google.code.kaptcha.impl.NoNoise");//去掉干扰线
         properties.put("kaptcha.textproducer.char.space", "6");
         properties.put("kaptcha.textproducer.font.names", "宋体,楷体,微软雅黑");
