@@ -101,7 +101,10 @@ public class UserController {
           subject.login(token);
          //登录后，可以用如下方式取得session  设置超时时间(10分钟)，超时会自动跳转至登录页面
           SecurityUtils.getSubject().getSession().setTimeout(600000); 
-        }catch (UnknownAccountException|IncorrectCredentialsException e){
+        }catch (UnknownAccountException e){
+        	model.addAttribute("result","用户不存在");
+            return "login";
+        }catch(IncorrectCredentialsException e){
           model.addAttribute("result","用户名/密码错误");
           return "login";
         }catch (AuthenticationException e){
