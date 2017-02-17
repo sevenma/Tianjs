@@ -1,53 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<div th:fragment="header">
-	<div class="warp-box" style="background-color: #252534;height: 25px;">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="box1">
-					<span >欢迎致电
-						天安（贵州省）互联网金融资产交易中心股份有限公司：0755-22620119</span>
-						 <img alt="100%x200" class ="img" src="../static/img/001.png" th:src="@{img/001.png}" /> 服务时间：
-					<time>（09:15-16:15）</time>
-				</div>
-				<div class="box2">
-             <!-- <a>
-                Logged as :
-                <span sec:authentication="name"></span>
-                Role :
-                <span sec:authorize="hasRole('ROLE_ADMIN')">admin</span>
-                <span sec:authorize="hasRole('ROLE_USER')">user</span>
-            </a> -->   
-					<a href="findproduct" class="navbar-brand"><span
-						class="glyphicon glyphicon-log-in"></span> 查询产品</a>
-
-					<a style="font-size:10px">
-						<span th:text="${result}"></span>
-						欢迎 ： <a th:text="${session.user}?${session.user.getUsername()}:'（您未登录）'"></a>
-					</a>
-					<a th:href="@{/registration}">注册</a> 
-					<a th:href="@{/login}" th:if="${session.user==null}">登录</a> 
-					<a th:href="@{/loginOut}" th:unless="${session.user==null}">退出</a>
-
-					<!-- <a href="login" class="navbar-brand">请登录</a>
-                    <a href="registration" class="navbar-brand">注册</a>
-                    <span class="loginIn">
-                        <a href="https://trade.qex.com/memberFundAccountOverviews.do" id="nickName"></a>
-                        <a href="logout" id="loginOut">安全退出</a>
-                    </span>	 -->
-					<span class="wx-pic-box">
-						<div class="top-wx-icon">&nbsp;</div>
-						<div class="top-wximg">
-							<img alt="100%x200" src="..static/img/2wm.png"
-								th:src="@{img/2wm.png}" />
-							<!-- <div>金交所</div> -->
-						</div>
-					</span>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<header>
+	<div class="container">
+        <ul>
+            <li><a href="/" th:href="@{/}"><i></i>天安金交所首页</a></li>
+        </ul>
+        <ul th:if="${session.user==null}">
+            <li><a th:href="@{/login}" th:if="${session.user==null}">登录</a></li>
+            <li><a href="javascript:void(0)">|</a></li>
+            <li><a th:href="@{/registration}">注册</a></li>
+        </ul>
+        <ul th:unless="${session.user==null}">
+            <li>欢迎您，<a th:text="${session.user.getUsername()}">登录</a></li>
+            <li><a href="javascript:void(0)">|</a></li>
+            <li><a th:href="@{/loginOut}" th:unless="${session.user==null}">退出</a></li>
+        </ul>
+    </div>
+</header>
 </html>
