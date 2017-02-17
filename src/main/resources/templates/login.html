@@ -1,61 +1,296 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>登录</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css"/>
-<link href="../static/css/styles.css" th:href="@{css/styles.css}"
-	rel="stylesheet" media="screen" />
- <link rel="icon" type="image/x-icon" href="/img/favicon.ico"/>
+    <title>登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/base.css}"
+	href="../static/css/base.css" />
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <style>
+        html,body,.container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        /*mask*/
+        .mask {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0px;
+            background: url("../img/preview1.jpg") no-repeat;
+            background-size: cover;
+            -webkit-filter: blur(10px);
+            -moz-filter: blur(10px);
+            -o-filter: blur(10px);
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+        }
+
+        .container{
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+        .container h2 {
+            position: absolute;
+            top: 50%;
+            left:100px;
+            z-index: 2;
+            animation: ani-h2 .5s ease-in-out;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        form {
+            width: 400px;
+            margin: 0px auto 0px auto;
+            padding: 20px 20px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #f15a50;
+            z-index: 1;
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            /*box-shadow: 5px 5px 5px 0px rgba(241, 90, 80, .5),0px 10px 10px 1px rgba(241, 90, 80, .3);*/
+            box-shadow: 0px 0px 30px 0px #fff;
+            animation: ani-form .5s ease-in-out;
+            opacity: 1;
+            margin-top: -200px;
+        }
+
+        /*form:before {*/
+            /*content: '';*/
+            /*position: absolute;*/
+            /*left: -0px;*/
+            /*right: -0px;*/
+            /*top: -0px;*/
+            /*bottom: -0px;*/
+            /*border: 1px solid rgba(241, 90, 80, 1);*/
+            /*border-radius: 10px;*/
+            /*!*background: #fff;*!*/
+            /*z-index: -1;*/
+            /*box-shadow: 0px 0px 10px 0px rgba(241, 90, 80, .3), 0px 0px 5px 0px rgba(241, 90, 80, .5);*/
+        /*}*/
+
+        /*form:after{*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*z-index:-2;*/
+        /*left:10px;*/
+        /*right:-30px;*/
+        /*top:-30px;*/
+        /*bottom:-15px;*/
+        /*border:1px solid rgba(241, 90, 80,.3);*/
+        /*box-shadow: 2px -2px 0px 1px rgba(241, 90, 80,.3);*/
+        /*border-radius: 10px;*/
+        /*}*/
+        form h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        @keyframes ani-form {
+            0% {
+                margin-top: 0px;
+
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+                margin-top: -200px;
+
+            }
+        }
+        @keyframes ani-h2 {
+            0% {
+                -webkit-transform: translateY(100%);
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+
+        form input {
+            transition: all .3s;
+        }
+
+        form > div {
+            margin: 10px 0px;
+            position: relative;
+            width: 330px;
+        }
+
+        form > div > input:nth-of-type(1) {
+            width: 240px;
+            height: 40px;
+            border: 1px solid #cecece;
+            padding: 6px 8px;
+            text-indent: 50px;
+            background: #fff;
+            border-radius: 5px;
+        }
+
+        form > div > p {
+            float: left;
+            height: 40px;
+            width: 90px;
+            text-align: right;
+            display: block;
+            line-height: 40px;
+        }
+
+        /*每个条目中的第一个input*/
+        form > div > input:nth-of-type(1):focus {
+            background: #fff;
+            border: 1px solid #f15a50;
+            box-shadow: 0px 0px 0px 5px rgba(241, 90, 80, .3);
+        }
+
+        /*每个条目中的icon*/
+        form > div > i {
+            position: absolute;
+            left: 90px;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px 0px 0px 5px;
+            color: #999;
+            border-right: 1px solid #cecece;
+        }
+
+        /*输入手机号*/
+        form > div:nth-of-type(3) input[type="text"] {
+            text-indent: 10px;
+        }
+
+        /*手机验证码开始*/
+        form > div:nth-of-type(4) input[type="text"] {
+            width: 240px;
+            text-indent: 10px;
+        }
+
+        form > div:nth-of-type(4) input[type="text"] {
+            width: 240px;
+            text-indent: 10px;
+        }
+
+        form > div:nth-of-type(4) input[type="text"] + input[type="button"] {
+            position: absolute;
+            width: 90px;
+            height: 40px;
+            right: 0;
+            top: 0;
+            border: 1px solid rgba(241, 90, 80, .3);
+            cursor: pointer;
+            background: #f15a50;
+            border-radius: 5px;
+            color: #fff;
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+        }
+
+        /*手机验证码结束*/
+        /*图片验证码开始*/
+        form > div > div {
+            position: absolute;
+            vertical-align: top;
+            top: 0;
+            right: 0;
+            border-radius: 0px 5px 5px 0px;
+        }
+
+        form > div > div > img {
+            display: block;
+        }
+
+        form > div > div > span {
+            position: absolute;
+            top: 40px;
+            font-size: 12px;
+            cursor: pointer;
+            display: block;
+        }
+
+        form > div > div > span:hover {
+            text-decoration: underline;
+            color: red;
+        }
+
+        form > div > input:focus + i {
+            box-shadow: 0px 0px 5px #f15a50 inset;
+            color: rgb(255, 90, 0);
+            border-right: 1px solid #f15a50;
+        }
+
+        form > input[type="submit"] {
+            width: 338px;
+            height: 40px;
+            background: #f15a50;;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid rgba(241, 90, 80, .3);
+            box-shadow: 0px 0px 3px #f15a50;
+            cursor: pointer;
+            margin: 30px auto 5px auto;
+        }
+
+        form > input[type="submit"]:active {
+            color: #f15a50;
+            background: #fff;
+            box-shadow: 0px 0px 0px 5px rgba(241, 90, 80, .3);
+        }
+
+        form > div > input[type="button"] {
+
+        }
+
+        form > p {
+            line-height: 21px;
+            text-align: right;
+            padding-right: 20px;
+        }
+        footer{
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            color: #999;
+        }
+    </style>
 </head>
-<style>
-.vertical-offset-100 {
-	padding-top: 100px;
-	padding-left: 112px;
-}
-</style>
-<body class="background"
-	style="background: url('../static/img/background.png') no-repeat center center fixed;"
-	th:style="'background: url(' + @{/img/background.png} + ') no-repeat center center fixed;'">
-	<div class="row vertical-offset-100">
-		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">请登录</h3>
-				</div>
-				<div class="panel-body">
-					<div>
-						<a href="/" th:href="@{/}" class="active">首页</a>
-					</div>
-					<form th:action="@{/login}"  method="post">
-						<div class="form-group">
-                                <input class="form-control" placeholder="Username" name="username" type="text"/>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value=""/>
-                            </div>
-                            <div class="form-group">
-								<label for="kaptcha"> <input type="text" name="kaptcha"
-									id="kaptcha" maxlength="4" class="span4" style="width: 72%" placeholder="验证码" />
-									<img th:src="@{/kaptcha}" id="kaptchaImage" src="/img/kaptcha.jpg"
-									style="margin-left: -5px; margin-top: -8px; width: 74px; height: 29px;" />
-								</label>
-							</div>
-						<div  class="alert alert-danger" role="alert">
-							<span th:text="${result}"></span>
-						</div>
-						<div >
-							<input class="btn btn-lg btn-success btn-block" type="submit" value="登录" />
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+<body>
+<div class="mask"></div>
+<div class="container">
+    <!--mask-->
+    <form th:action="@{/login}"  method="post">
+        <header><h4>用户登录</h4></header>
+        <div><p>会员编号：</p><input type="text" maxlength="20" size="8" placeholder="会员编号" name="username" required="required"/><i></i></div>
+        <div><p>密码：</p><input type="password" maxlength="20" size="8"  placeholder="密码" name="password" required="required"/></div>
+        <div><p>手机号码：</p><input type="text" maxlength="20" size="8" pattern="[0-9]{11}" name="phonenumber" required="required"/></div>
+        <div><p>验证码：</p><input type="text"/><input type="button" name="msgnumber" required="required" value="获取验证码"/></div>
+        <div><input type="text" name="kaptcha" id="kaptcha" maxlength="4" placeholder="请输入图形验证码" style="width: 203px;margin-left: 36px;" required="required"/>
+            <div><img th:src="@{/kaptcha}" id="kaptchaImage" src="/img/kaptcha.jpg" width="90" height="39"/><span><a onclick="changeCode()">看不清？换一张</a></span></div>
+        </div>
+        <input type="submit" value="登录"/>
+        <p><a href="/changePwd" th:href="@{/changePwd}">忘记密码</a>|<a href="/registration" th:href="@{/registration}">快速注册</a></p>
+    </form>
+    <header><h2><a href="/" th:href="@{/}"><img src="img/logo.png" alt="天安金交所" /></a></h2></header>
+    <footer><p>版权所有©天安（贵州省）互联网金融资产交易中心股份有限公司</p></footer>
+</div>
 </body>
 <script th:src="@{/js/jquery.js}"></script>
-<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
    $(function () { 
         $('#kaptchaImage').click(function () {

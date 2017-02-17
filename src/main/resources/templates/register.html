@@ -152,6 +152,7 @@ form>div>input[type="button"] {
 </head>
 <body>
 <!-- <div th:include="header :: header" style="height: 116px;background: #f5f5f5;"></div>  -->
+<div style="height: 116px;background: #f5f5f5;"></div>
 <div class="container">
     <form th:action="@{/registration}" method="post">
         <header><h4>用户注册</h4></header>
@@ -176,16 +177,9 @@ form>div>input[type="button"] {
 	$(function() {
 		$('#kaptchaImage').click(
 				function() {
-					$(this).hide().attr('src',
-							'/kaptcha?' + Math.floor(Math.random() * 10000))
-							.fadeIn();
+					$(this).hide().attr('src','/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
 				});
 	});
 
-	function changeCode() {
-		$('#kaptchaImage').hide().attr('src',
-				'/kaptcha?' + Math.floor(Math.random() * 10000)).fadeIn();
-		event.cancelBubble = true;
-	}
 </script>
 </html>
