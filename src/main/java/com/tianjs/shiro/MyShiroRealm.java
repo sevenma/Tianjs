@@ -6,6 +6,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -80,10 +81,17 @@ public class MyShiroRealm extends AuthorizingRealm {
 		UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
 		// 查出是否有此用户
 		User user = userService.findByUsername(token.getUsername());
-		if (user != null) {
+		if(user == null){
+			// 抛出 帐号找不到异常  
+            throw new UnknownAccountException(); 
+		}
+		
+		// 判断帐号是否锁定  
+//        if (Boolean.TRUE.equals(user.getLocked())) {  
+//            // 抛出 帐号锁定异常  
+//            throw new LockedAccountException();  
+//        } 
 			// 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
 			return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
-		}
-		return null;
 	}
 }
