@@ -277,7 +277,7 @@
     <form th:action="@{/login}"  method="post">
         <header><h4>用户登录</h4></header>
         <div><p>会员编号：</p><input type="text" maxlength="20" size="8" placeholder="会员编号" name="username" required="required"/><i></i></div>
-        <div><p>密码：</p><input type="password" maxlength="20" size="8"  placeholder="密码" name="password" required="required"/></div>
+        <div><p>登录密码：</p><input type="password" maxlength="20" size="8"  placeholder="登录密码" name="password" required="required"/></div>
         <div><p>手机号码：</p><input type="text" maxlength="20" size="8" pattern="[0-9]{11}" name="phonenumber" required="required"/></div>
         <div><p>验证码：</p><input type="text"/><input type="button" name="msgnumber" required="required" value="获取验证码"/></div>
         <div><input type="text" name="kaptcha" id="kaptcha" maxlength="4" placeholder="请输入图形验证码" style="width: 203px;margin-left: 36px;" required="required"/>
