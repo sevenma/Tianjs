@@ -9,7 +9,6 @@ import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
-import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 
@@ -22,9 +21,9 @@ public class HttpSendUtil {
         String result = "";
         try {
         	HttpPost httpPost = new HttpPost(url); 
-	        StringEntity  entity = new StringEntity(json, HTTP.UTF_8);
+	        StringEntity  entity = new StringEntity(json, "UTF-8");
 	        entity.setContentEncoding("UTF-8");
-	        entity.setContentType("application/json");
+	        entity.setContentType("application/x-www-form-urlencoded");
 	        httpPost.setEntity(entity);
 	        HttpClient client1 = new DefaultHttpClient();
 	        
